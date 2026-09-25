@@ -30,7 +30,15 @@ target_link_libraries(dating_core PUBLIC Qt6::Core Qt6::Sql PRIVATE PkgConfig::S
 
 qt_add_executable(DatingApp WIN32
     src/main.cpp
+    src/ui/LoginWindow.cpp
 )
+
+qt_add_resources(DatingApp "app_resources"
+    PREFIX "/"
+    BASE resources
+    FILES resources/seed_profiles.json
+)
+
 
 target_link_libraries(DatingApp PRIVATE dating_core Qt6::Widgets)
 target_compile_definitions(DatingApp PRIVATE APP_VERSION="${PROJECT_VERSION}")

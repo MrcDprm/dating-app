@@ -20,3 +20,9 @@ qt_add_executable(DatingApp WIN32
 
 target_link_libraries(DatingApp PRIVATE dating_core Qt6::Widgets)
 target_compile_definitions(DatingApp PRIVATE APP_VERSION="${PROJECT_VERSION}")
+
+find_package(Qt6 REQUIRED COMPONENTS Test)
+enable_testing()
+qt_add_executable(test_core tests/test_core.cpp)
+target_link_libraries(test_core PRIVATE dating_core Qt6::Test)
+add_test(NAME test_core COMMAND test_core)

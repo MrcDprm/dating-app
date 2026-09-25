@@ -17,7 +17,7 @@ C++ ve Qt 6 ile yazılmış masaüstü eşleştirme uygulaması. Profilleri uyum
 - [ ] Mesajlaşma: eşleşilen profil yapay zekâ ile kendi karakterinde cevap verir, sohbet geçmişi saklanır
 - [ ] Yapay zekâ sağlayıcısı: varsayılan yerel **Ollama** (ücretsiz, anahtar gerekmez); isteğe bağlı **Claude API** (kullanıcının kendi anahtarı, Windows DPAPI ile şifreli saklanır)
 - [ ] Yapay zekâya ulaşılamazsa anlaşılır hata mesajı; uygulama çökmez
-- [ ] 40 civarı hazır örnek profil (CC0 lisanslı çizim avatarlar)
+- [ ] 40 hazır örnek profil (hayali karakterler; fotoğrafı olmayan profillere baş harfli renkli avatar çizilir)
 - [ ] Veriler SQLite ile kullanıcı klasöründe (`%APPDATA%\DatingApp`)
 - [ ] Ayarlar, Hakkında penceresi, uygulama ikonu, sürüm numarası
 - [ ] Birim testleri (uyum puanı, sıralama, şifre kontrolü)

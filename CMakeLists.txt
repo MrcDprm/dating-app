@@ -18,6 +18,8 @@ qt_add_library(dating_core STATIC
     src/core/PasswordPolicy.cpp
     src/core/PasswordHasher.cpp
     src/data/Database.cpp
+    src/data/SeedProfiles.cpp
+
 
 )
 
@@ -37,4 +39,5 @@ find_package(Qt6 REQUIRED COMPONENTS Test)
 enable_testing()
 qt_add_executable(test_core tests/test_core.cpp)
 target_link_libraries(test_core PRIVATE dating_core Qt6::Test)
+target_compile_definitions(test_core PRIVATE SEED_FILE="${CMAKE_SOURCE_DIR}/resources/seed_profiles.json")
 add_test(NAME test_core COMMAND test_core)

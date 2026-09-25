@@ -2,6 +2,9 @@
 #include "core/PasswordHasher.h"
 #include "core/PasswordPolicy.h"
 #include "data/Database.h"
+#include "data/SeedProfiles.h"
+
+#include <QFile>
 #include <QTest>
 
 namespace {
@@ -42,6 +45,8 @@ private slots:
     void accountUsernameIsUniqueIgnoringCase();
     void mutualLikeCreatesMatch();
     void unmatchHidesProfileAndDeletesChat();
+    void seedImportSkipsInvalidEntries();
+    void bundledSeedFileIsValid();
 };
 
 void TestCore::identicalProfilesScoreFull()
@@ -223,6 +228,41 @@ void TestCore::unmatchHidesProfileAndDeletesChat()
     QVERIFY(db.matches("me").isEmpty());
     QVERIFY(db.messages("me", "ai").isEmpty());
     QVERIFY(db.unseenProfiles("me").isEmpty());
+}
+
+void TestCore::seedImportSkipsInvalidEntries()
+{
+    Database db;
+    QVERIFY(db.open(":memory:"));
+
+    const QByteArray json = R"([
+        {"id": "7f1c1f3e-2a41-4a8e-9a53-0c2b1f7d9e11", "name": "Geçerli", "age": 30,
+         "gender": "woman", "seeking": "men", "interests": ["Müzik", "Uydurma"]},
+        {"id": "8a2d2f4e-3b52-4b9f-8b64-1d3c2e8e0f22", "name": "Reşit değil", "age": 16,
+         "gender": "man", "seeking": "women"},
+        {"id": "1", "name": "Bozuk kimlik", "age": 25, "gender": "man", "seeking": "women"},
+        {"id": "9b3e3a5f-4c63-4ca0-9c75-2e4d3f9f1a33", "name": "Bozuk cinsiyet", "age": 25,
+         "gender": "x", "seeking": "women"}
+    ])";
+    QCOMPARE(importSeedProfiles(db, json), 1);
+
+    const std::optional<Profile> profile = db.profile("7f1c1f3e-2a41-4a8e-9a53-0c2b1f7d9e11");
+    QVERIFY(profile.has_value());
+    QVERIFY(profile->isAiPersona);
+    QCOMPARE(profile->interests, QStringList({"Müzik"})); // katalogda olmayan ilgi alanı atılır
+
+    QCOMPARE(importSeedProfiles(db, "bu json değil"), -1);
+}
+
+void TestCore::bundledSeedFileIsValid()
+{
+    QFile file(SEED_FILE);
+    QVERIFY(file.open(QIODevice::ReadOnly));
+
+    Database db;
+    QVERIFY(db.open(":memory:"));
+    QCOMPARE(importSeedProfiles(db, file.readAll()), 40);
+    QVERIFY(db.hasAiProfiles());
 }
 
 QTEST_GUILESS_MAIN(TestCore)

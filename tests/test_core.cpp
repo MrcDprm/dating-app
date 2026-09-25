@@ -1,4 +1,6 @@
 #include "core/Compatibility.h"
+#include "core/PasswordHasher.h"
+#include "core/PasswordPolicy.h"
 
 #include <QTest>
 
@@ -24,12 +26,18 @@ class TestCore : public QObject
     Q_OBJECT
 
 private slots:
+    void initTestCase();
     void identicalProfilesScoreFull();
     void nothingInCommonScoresZero();
     void duplicateInterestsCountOnce();
     void mutualFitChecksBothSides();
     void mutualFitChecksAgeRange();
     void rankingSortsAndFilters();
+    void weakPasswordsAreRejected_data();
+    void weakPasswordsAreRejected();
+    void strongPasswordIsAccepted();
+    void hashVerifiesOnlyCorrectPassword();
+
 };
 
 void TestCore::identicalProfilesScoreFull()
@@ -100,6 +108,42 @@ void TestCore::rankingSortsAndFilters()
     QCOMPARE(ranked.size(), 2);
     QCOMPARE(ranked[0].profile.id, QString("high"));
     QCOMPARE(ranked[1].profile.id, QString("low"));
+}
+
+void TestCore::initTestCase()
+{
+    QVERIFY(PasswordHasher::initialize());
+}
+
+void TestCore::weakPasswordsAreRejected_data()
+{
+    QTest::addColumn<QString>("password");
+    QTest::newRow("kısa") << "Ab1";
+    QTest::newRow("büyük harf yok") << "abcdefg1";
+    QTest::newRow("küçük harf yok") << "ABCDEFG1";
+    QTest::newRow("rakam yok") << "Abcdefgh";
+    QTest::newRow("kullanıcı adı içeriyor") << "Mirac2026x";
+}
+
+void TestCore::weakPasswordsAreRejected()
+{
+    QFETCH(QString, password);
+    QVERIFY(!passwordProblems(password, "mirac").isEmpty());
+}
+
+void TestCore::strongPasswordIsAccepted()
+{
+    QVERIFY(passwordProblems("Güçlü2026Şifre", "mirac").isEmpty());
+}
+
+void TestCore::hashVerifiesOnlyCorrectPassword()
+{
+    const std::optional<QString> hash = PasswordHasher::hash("Güçlü2026Şifre");
+    QVERIFY(hash.has_value());
+    QVERIFY(hash->startsWith("$argon2id$"));
+    QVERIFY(PasswordHasher::verify("Güçlü2026Şifre", *hash));
+    QVERIFY(!PasswordHasher::verify("güçlü2026şifre", *hash));
+    QVERIFY(!PasswordHasher::verify("Güçlü2026Şifre", "bozuk-veri"));
 }
 
 QTEST_GUILESS_MAIN(TestCore)

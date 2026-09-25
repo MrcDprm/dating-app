@@ -1,7 +1,7 @@
 #include "core/Compatibility.h"
 #include "core/PasswordHasher.h"
 #include "core/PasswordPolicy.h"
-
+#include "data/Database.h"
 #include <QTest>
 
 namespace {
@@ -11,6 +11,7 @@ Profile makeProfile(const QString &id, int age, Gender gender, Seeking seeking,
 {
     Profile profile;
     profile.id = id;
+    profile.name = id;
     profile.age = age;
     profile.gender = gender;
     profile.seeking = seeking;
@@ -37,7 +38,10 @@ private slots:
     void weakPasswordsAreRejected();
     void strongPasswordIsAccepted();
     void hashVerifiesOnlyCorrectPassword();
-
+    void profileRoundTrip();
+    void accountUsernameIsUniqueIgnoringCase();
+    void mutualLikeCreatesMatch();
+    void unmatchHidesProfileAndDeletesChat();
 };
 
 void TestCore::identicalProfilesScoreFull()
@@ -144,6 +148,81 @@ void TestCore::hashVerifiesOnlyCorrectPassword()
     QVERIFY(PasswordHasher::verify("Güçlü2026Şifre", *hash));
     QVERIFY(!PasswordHasher::verify("güçlü2026şifre", *hash));
     QVERIFY(!PasswordHasher::verify("Güçlü2026Şifre", "bozuk-veri"));
+}
+
+void TestCore::profileRoundTrip()
+{
+    Database db;
+    QVERIFY2(db.open(":memory:"), qPrintable(db.lastError()));
+
+    Profile saved = makeProfile("p1", 27, Gender::Woman, Seeking::Men, "İzmir", {"Müzik", "Kahve"});
+    saved.name = "Elif";
+    saved.bio = "Merhaba!";
+    saved.isAiPersona = true;
+    QVERIFY2(db.saveProfile(saved), qPrintable(db.lastError()));
+
+    const std::optional<Profile> loaded = db.profile("p1");
+    QVERIFY(loaded.has_value());
+    QCOMPARE(loaded->name, QString("Elif"));
+    QCOMPARE(loaded->age, 27);
+    QCOMPARE(loaded->gender, Gender::Woman);
+    QCOMPARE(loaded->interests, QStringList({"Müzik", "Kahve"}));
+    QVERIFY(loaded->isAiPersona);
+    QVERIFY(!db.profile("yok").has_value());
+}
+
+void TestCore::accountUsernameIsUniqueIgnoringCase()
+{
+    Database db;
+    QVERIFY(db.open(":memory:"));
+
+    QVERIFY(db.createAccount("mirac", "hash1", makeProfile("u1", 25, Gender::Man, Seeking::Women, "", {})));
+    QVERIFY(!db.createAccount("MIRAC", "hash2", makeProfile("u2", 25, Gender::Man, Seeking::Women, "", {})));
+    QVERIFY(!db.profile("u2").has_value()); // başarısız kayıt profili de geri alır
+
+    const std::optional<UserAccount> account = db.account("Mirac");
+    QVERIFY(account.has_value());
+    QCOMPARE(account->profileId, QString("u1"));
+}
+
+void TestCore::mutualLikeCreatesMatch()
+{
+    Database db;
+    QVERIFY(db.open(":memory:"));
+    QVERIFY(db.saveProfile(makeProfile("me", 25, Gender::Man, Seeking::Women, "", {})));
+    QVERIFY(db.saveProfile(makeProfile("ai", 25, Gender::Woman, Seeking::Men, "", {})));
+    QVERIFY(db.saveProfile(makeProfile("ai2", 25, Gender::Woman, Seeking::Men, "", {})));
+
+    QCOMPARE(db.unseenProfiles("me").size(), 2);
+    QVERIFY(db.recordSwipe("me", "ai", true));
+    QVERIFY(!db.isMatch("me", "ai"));
+    QCOMPARE(db.unseenProfiles("me").size(), 1); // görülen profil tekrar önerilmez
+
+    QVERIFY(db.recordSwipe("ai", "me", true));
+    QVERIFY(db.isMatch("me", "ai"));
+    QCOMPARE(db.matches("me").size(), 1);
+}
+
+void TestCore::unmatchHidesProfileAndDeletesChat()
+{
+    Database db;
+    QVERIFY(db.open(":memory:"));
+    QVERIFY(db.saveProfile(makeProfile("me", 25, Gender::Man, Seeking::Women, "", {})));
+    QVERIFY(db.saveProfile(makeProfile("ai", 25, Gender::Woman, Seeking::Men, "", {})));
+    QVERIFY(db.recordSwipe("me", "ai", true));
+    QVERIFY(db.recordSwipe("ai", "me", true));
+
+    QVERIFY(db.addMessage("me", "ai", true, "Selam!"));
+    QVERIFY(db.addMessage("me", "ai", false, "Merhaba 😊"));
+    const QList<ChatMessage> chat = db.messages("me", "ai");
+    QCOMPARE(chat.size(), 2);
+    QVERIFY(chat[0].fromUser);
+    QCOMPARE(chat[1].text, QString("Merhaba 😊"));
+
+    QVERIFY(db.unmatch("me", "ai"));
+    QVERIFY(db.matches("me").isEmpty());
+    QVERIFY(db.messages("me", "ai").isEmpty());
+    QVERIFY(db.unseenProfiles("me").isEmpty());
 }
 
 QTEST_GUILESS_MAIN(TestCore)

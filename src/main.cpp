@@ -2,13 +2,12 @@
 #include "data/Database.h"
 #include "data/SeedProfiles.h"
 #include "ui/LoginWindow.h"
+#include "ui/MainWindow.h"
 
 #include <QApplication>
 #include <QDebug>
 #include <QDir>
 #include <QFile>
-#include <QLabel>
-#include <QMainWindow>
 #include <QMessageBox>
 #include <QStandardPaths>
 
@@ -56,13 +55,9 @@ int main(int argc, char *argv[])
     if (!me)
         return fail("Profil bulunamadı.");
 
-    QMainWindow window;
-    window.setWindowTitle("Dating App");
-    window.resize(1000, 700);
-    auto *welcome = new QLabel("Hoş geldin, " + me->name + "!");
-    welcome->setTextFormat(Qt::PlainText);
-    window.setCentralWidget(welcome);
+    MainWindow window(db, *me);
     window.show();
+
 
     return app.exec();
 }

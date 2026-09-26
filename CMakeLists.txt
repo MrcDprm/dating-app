@@ -31,6 +31,9 @@ target_link_libraries(dating_core PUBLIC Qt6::Core Qt6::Sql PRIVATE PkgConfig::S
 qt_add_executable(DatingApp WIN32
     src/main.cpp
     src/ui/LoginWindow.cpp
+    src/ui/MainWindow.cpp
+    src/ui/DiscoverPage.cpp
+    src/ui/Avatar.cpp
 )
 
 qt_add_resources(DatingApp "app_resources"

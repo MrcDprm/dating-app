@@ -37,6 +37,7 @@ private slots:
     void mutualFitChecksBothSides();
     void mutualFitChecksAgeRange();
     void rankingSortsAndFilters();
+    void personaLikeBackChanceFollowsScore();
     void weakPasswordsAreRejected_data();
     void weakPasswordsAreRejected();
     void strongPasswordIsAccepted();
@@ -263,6 +264,15 @@ void TestCore::bundledSeedFileIsValid()
     QVERIFY(db.open(":memory:"));
     QCOMPARE(importSeedProfiles(db, file.readAll()), 40);
     QVERIFY(db.hasAiProfiles());
+}
+
+void TestCore::personaLikeBackChanceFollowsScore()
+{
+    QVERIFY(personaLikesBack(0, 29));   // en düşük olasılık %30
+    QVERIFY(!personaLikesBack(0, 30));
+    QVERIFY(personaLikesBack(60, 79));  // 60 + 20 = %80
+    QVERIFY(!personaLikesBack(60, 80));
+    QVERIFY(!personaLikesBack(100, 95)); // en yüksek olasılık %95
 }
 
 QTEST_GUILESS_MAIN(TestCore)

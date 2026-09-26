@@ -72,3 +72,10 @@ QList<RankedProfile> rankCandidates(const Profile &me, const QList<Profile> &oth
     });
     return ranked;
 }
+
+
+bool personaLikesBack(int score, int roll)
+{
+    const int chance = std::clamp(score + 20, 30, 95);
+    return roll < chance;
+}

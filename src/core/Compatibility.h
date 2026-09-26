@@ -26,3 +26,8 @@ CompatibilityResult calculateCompatibility(const Profile &a, const Profile &b);
 
 // Uygun adayları uyum puanına göre yüksekten düşüğe sıralar
 QList<RankedProfile> rankCandidates(const Profile &me, const QList<Profile> &others);
+
+
+// Hazır profil kullanıcıyı geri beğenir mi. roll 0-99 arası rastgele bir sayıdır;
+// uyum puanı yükseldikçe geri beğenme olasılığı artar (en az %30, en fazla %95).
+bool personaLikesBack(int score, int roll);

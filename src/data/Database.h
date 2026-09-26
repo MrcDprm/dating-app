@@ -50,6 +50,8 @@ public:
     bool isMatch(const QString &userId, const QString &otherId) const;
     QList<Profile> matches(const QString &userId) const;
     bool unmatch(const QString &userId, const QString &otherId);
+    bool resetPasses(const QString &userId);
+
 
     // Mesajlar
     bool addMessage(const QString &userId, const QString &otherId, bool fromUser, const QString &text);

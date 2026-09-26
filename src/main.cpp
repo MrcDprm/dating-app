@@ -41,11 +41,11 @@ int main(int argc, char *argv[])
         return fail("Veritabanı açılamadı.");
     }
 
-    if (!db.hasAiProfiles()) {
-        QFile seed(":/seed_profiles.json");
-        if (!seed.open(QIODevice::ReadOnly) || importSeedProfiles(db, seed.readAll()) <= 0)
-            qWarning() << "Hazır profiller yüklenemedi";
-    }
+       // Hazır profiller her açılışta güncellenir; yeni sürümde eklenen profiller de gelir
+    QFile seed(":/seed_profiles.json");
+    if (!seed.open(QIODevice::ReadOnly) || importSeedProfiles(db, seed.readAll()) <= 0)
+        qWarning() << "Hazır profiller yüklenemedi";
+
 
     LoginWindow login(db);
     if (login.exec() != QDialog::Accepted)

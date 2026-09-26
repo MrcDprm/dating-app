@@ -25,6 +25,8 @@ signals:
 private:
     void showCurrent();
     void swipe(bool liked);
+    void showPassedAgain();
+
 
     Database &m_db;
     Profile m_me;
@@ -37,5 +39,5 @@ private:
     QLabel *m_score = nullptr;
     QLabel *m_details = nullptr;
     QLabel *m_bio = nullptr;
-    QLabel *m_empty = nullptr;
+    QWidget *m_emptyState = nullptr;
 };

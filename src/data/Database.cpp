@@ -332,6 +332,19 @@ bool Database::unmatch(const QString &userId, const QString &otherId)
     return db.commit();
 }
 
+bool Database::resetPasses(const QString &userId)
+{
+    // "Geç" denen profiller tekrar önerilsin diye o kayıtlar silinir; beğeniler korunur
+    QSqlQuery query(QSqlDatabase::database(m_connectionName));
+    query.prepare("DELETE FROM swipes WHERE from_id = :id AND liked = 0");
+    query.bindValue(":id", userId);
+    if (!query.exec()) {
+        m_lastError = query.lastError().text();
+        return false;
+    }
+    return true;
+}
+
 // ---------- Mesajlar ----------
 
 bool Database::addMessage(const QString &userId, const QString &otherId, bool fromUser, const QString &text)

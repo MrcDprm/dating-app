@@ -47,6 +47,7 @@ private slots:
     void accountUsernameIsUniqueIgnoringCase();
     void mutualLikeCreatesMatch();
     void unmatchHidesProfileAndDeletesChat();
+    void resetPassesKeepsLikes();
     void seedImportSkipsInvalidEntries();
     void bundledSeedFileIsValid();
     void personaPromptContainsCharacterAndRules();
@@ -264,7 +265,7 @@ void TestCore::bundledSeedFileIsValid()
 
     Database db;
     QVERIFY(db.open(":memory:"));
-    QCOMPARE(importSeedProfiles(db, file.readAll()), 40);
+    QCOMPARE(importSeedProfiles(db, file.readAll()), 100);
     QVERIFY(db.hasAiProfiles());
 }
 
@@ -286,12 +287,30 @@ void TestCore::personaPromptContainsCharacterAndRules()
     user.name = "Miraç";
 
     const QString prompt = buildPersonaPrompt(persona, user);
-    QVERIFY(prompt.contains("Sen Selin adında, 27 yaşında, İstanbul"));
+    QVERIFY(prompt.contains("role-playing Selin, a 27-year-old person living in İstanbul"));
     QVERIFY(prompt.contains("Zeki ve alaycı"));
-    QVERIFY(prompt.contains("Miraç"));
-    QVERIFY(prompt.contains("Kahve"));
-    QVERIFY(prompt.contains("hayali bir karakter"));
+    QVERIFY(prompt.contains("with Miraç (25 years old, interests: Kahve)"));
+    QVERIFY(prompt.contains("ONLY in natural, grammatical, everyday Turkish"));
+    QVERIFY(prompt.contains("AI character"));
 }
+
+void TestCore::resetPassesKeepsLikes()
+{
+    Database db;
+    QVERIFY(db.open(":memory:"));
+    QVERIFY(db.saveProfile(makeProfile("me", 25, Gender::Man, Seeking::Women, "", {})));
+    QVERIFY(db.saveProfile(makeProfile("a", 25, Gender::Woman, Seeking::Men, "", {})));
+    QVERIFY(db.saveProfile(makeProfile("b", 25, Gender::Woman, Seeking::Men, "", {})));
+    QVERIFY(db.recordSwipe("me", "a", false));
+    QVERIFY(db.recordSwipe("me", "b", true));
+    QVERIFY(db.unseenProfiles("me").isEmpty());
+
+    QVERIFY(db.resetPasses("me"));
+    const QList<Profile> unseen = db.unseenProfiles("me");
+    QCOMPARE(unseen.size(), 1); // sadece geçilen profil geri gelir
+    QCOMPARE(unseen[0].id, QString("a"));
+}
+
 
 QTEST_GUILESS_MAIN(TestCore)
 #include "test_core.moc"

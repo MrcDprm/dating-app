@@ -68,19 +68,28 @@ DiscoverPage::DiscoverPage(Database &db, QWidget *parent)
     cardLayout->addSpacing(12);
     cardLayout->addLayout(buttons);
 
-    m_empty = createTextLabel();
-    m_empty->setText("Şimdilik gösterecek kimse kalmadı.\n"
-                     "Profil sekmesinden yaş aralığını ya da kimi aradığını değiştirmeyi deneyebilirsin.");
+    auto *emptyText = createTextLabel();
+    emptyText->setText("Şimdilik gösterecek kimse kalmadı.\n"
+                       "Profil sekmesinden yaş aralığını ya da kimi aradığını genişletebilir "
+                       "veya geçtiğin profillere tekrar bakabilirsin.");
+    auto *passedAgainButton = new QPushButton("Geçtiklerimi tekrar göster");
+    m_emptyState = new QWidget;
+    auto *emptyLayout = new QVBoxLayout(m_emptyState);
+    emptyLayout->addWidget(emptyText);
+    emptyLayout->addWidget(passedAgainButton, 0, Qt::AlignHCenter);
+
 
     auto *layout = new QVBoxLayout(this);
     layout->addWidget(m_hint);
     layout->addStretch();
     layout->addWidget(m_card, 0, Qt::AlignHCenter);
-    layout->addWidget(m_empty);
+    layout->addWidget(m_emptyState);
     layout->addStretch();
 
     connect(passButton, &QPushButton::clicked, this, [this] { swipe(false); });
     connect(likeButton, &QPushButton::clicked, this, [this] { swipe(true); });
+    connect(passedAgainButton, &QPushButton::clicked, this, &DiscoverPage::showPassedAgain);
+
 
     auto *passShortcut = new QShortcut(Qt::Key_Left, this);
     auto *likeShortcut = new QShortcut(Qt::Key_Right, this);
@@ -102,7 +111,7 @@ void DiscoverPage::showCurrent()
 {
     const bool hasCandidate = !m_queue.isEmpty();
     m_card->setVisible(hasCandidate);
-    m_empty->setVisible(!hasCandidate);
+    m_emptyState->setVisible(!hasCandidate);
     if (!hasCandidate)
         return;
 
@@ -131,11 +140,22 @@ void DiscoverPage::swipe(bool liked)
     const Profile &other = current.profile;
     m_db.recordSwipe(m_me.id, other.id, liked);
 
-    // Hazır profil, uyum puanına bağlı bir olasılıkla geri beğenir
-    const int roll = QRandomGenerator::global()->bounded(100);
-    if (liked && other.isAiPersona && personaLikesBack(current.compatibility.score, roll)) {
-        m_db.recordSwipe(other.id, m_me.id, true);
-        emit matched(other);
+    if (liked) {
+        // Karşı taraf seni daha önce beğendiyse hemen eşleşme; yoksa hazır profil
+        // uyum puanına bağlı bir olasılıkla geri beğenir
+        const int roll = QRandomGenerator::global()->bounded(100);
+        if (!m_db.isMatch(m_me.id, other.id) && other.isAiPersona
+            && personaLikesBack(current.compatibility.score, roll)) {
+            m_db.recordSwipe(other.id, m_me.id, true);
+        }
+        if (m_db.isMatch(m_me.id, other.id))
+            emit matched(other);
     }
     showCurrent();
+}
+
+void DiscoverPage::showPassedAgain()
+{
+    m_db.resetPasses(m_me.id);
+    setCurrentUser(m_me);
 }

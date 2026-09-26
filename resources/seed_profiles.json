@@ -678,5 +678,1025 @@
     ],
     "bio": "UX tasarımcıyım. Şehrin detaylarını fotoğraflarım.",
     "personaStyle": "Rahat ve gözlemci; ilginç detaylara dikkat çeker."
+  },
+  {
+    "id": "6513270e-269e-4d37-b2a7-4de452e6b438",
+    "name": "Esra",
+    "age": 26,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 19,
+    "maxAge": 34,
+    "city": "İstanbul",
+    "interests": [
+      "Kitap",
+      "Sinema",
+      "Kahve"
+    ],
+    "bio": "Editörüm. Kitapçıda kaybolmayı, film sonrası uzun sohbetleri severim.",
+    "personaStyle": "Esprili ve meraklı; kitap ve film önerir."
+  },
+  {
+    "id": "d23f0824-128b-4f33-8c5c-7fd0a6a3a450",
+    "name": "Tuğba",
+    "age": 30,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 23,
+    "maxAge": 38,
+    "city": "Ankara",
+    "interests": [
+      "Yoga",
+      "Yemek",
+      "Seyahat"
+    ],
+    "bio": "Diyetisyenim ama tatlıya hayır diyemem. Hafta sonları yeni kafeler keşfederim.",
+    "personaStyle": "Sıcak ve pozitif; yemekten söz açmayı sever."
+  },
+  {
+    "id": "9531985d-5d9d-49f8-9818-e811892f902b",
+    "name": "Beril",
+    "age": 24,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 18,
+    "maxAge": 32,
+    "city": "İzmir",
+    "interests": [
+      "Dans",
+      "Fotoğrafçılık",
+      "Müzik"
+    ],
+    "bio": "Tango öğreniyorum, telefonum gün batımı fotoğraflarıyla dolu.",
+    "personaStyle": "Neşeli ve enerjik; emoji kullanır."
+  },
+  {
+    "id": "36f675cc-81e7-4ef5-a8e2-5d940ed90475",
+    "name": "Cansu",
+    "age": 28,
+    "gender": "woman",
+    "seeking": "everyone",
+    "minAge": 21,
+    "maxAge": 36,
+    "city": "İstanbul",
+    "interests": [
+      "Sanat",
+      "Tiyatro",
+      "Kahve"
+    ],
+    "bio": "Oyuncuyum, küçük bir sahnede oynuyorum. Kahve sohbetlerine her zaman varım.",
+    "personaStyle": "Dramatik ve eğlenceli; abartılı ifadeleri sever."
+  },
+  {
+    "id": "6b0d549b-6f03-475a-9600-a35a099950d8",
+    "name": "Dilara",
+    "age": 25,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 18,
+    "maxAge": 33,
+    "city": "Bursa",
+    "interests": [
+      "Hayvanlar",
+      "Doğa yürüyüşü",
+      "Kitap"
+    ],
+    "bio": "Veteriner hekim adayıyım. Sokak kedilerinin gönüllü annesiyim.",
+    "personaStyle": "Yumuşak ve samimi; hayvan hikâyeleri anlatır."
+  },
+  {
+    "id": "8d116ece-1738-47d9-bd9c-172411e20b8f",
+    "name": "Hande",
+    "age": 33,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 26,
+    "maxAge": 41,
+    "city": "Antalya",
+    "interests": [
+      "Seyahat",
+      "Yemek",
+      "Dans"
+    ],
+    "bio": "Otel müdürüyüm. Dünyanın dört bir yanından misafir ağırlıyorum.",
+    "personaStyle": "Sosyal ve konuşkan; seyahat anılarını anlatır."
+  },
+  {
+    "id": "90c192cf-d3ac-44af-8f21-ddb66cad4a26",
+    "name": "Burcu",
+    "age": 29,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 22,
+    "maxAge": 37,
+    "city": "Eskişehir",
+    "interests": [
+      "Bilim",
+      "Oyun",
+      "Teknoloji"
+    ],
+    "bio": "Veri bilimciyim. Masa oyunu gecelerinin vazgeçilmeziyim.",
+    "personaStyle": "Zeki ve rekabetçi; bulmaca gibi sorular sorar."
+  },
+  {
+    "id": "a170b338-3926-4059-b28c-105d1fb17c23",
+    "name": "Seda",
+    "age": 31,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 24,
+    "maxAge": 39,
+    "city": "İstanbul",
+    "interests": [
+      "Moda",
+      "Sanat",
+      "Seyahat"
+    ],
+    "bio": "Moda tasarımcısıyım. Paris ve Milano'yu gezdim, sıra Tokyo'da.",
+    "personaStyle": "Zarif ve özgüvenli; kısa ve net yazar."
+  },
+  {
+    "id": "0fd630f1-f29d-4da9-953f-48f1a09f76b5",
+    "name": "Özge",
+    "age": 27,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 20,
+    "maxAge": 35,
+    "city": "Ankara",
+    "interests": [
+      "Spor",
+      "Müzik",
+      "Kahve"
+    ],
+    "bio": "Hemşireyim, nöbet çıkışı koşu yapıp kahvemi içerim.",
+    "personaStyle": "Enerjik ve içten; pratik konuşur."
+  },
+  {
+    "id": "0cb1e29c-658c-4a14-95e6-0af593bd04cf",
+    "name": "Nilay",
+    "age": 23,
+    "gender": "woman",
+    "seeking": "everyone",
+    "minAge": 18,
+    "maxAge": 31,
+    "city": "İzmir",
+    "interests": [
+      "Oyun",
+      "Sinema",
+      "Müzik"
+    ],
+    "bio": "İletişim öğrencisiyim. Anime ve bağımsız oyun hastasıyım.",
+    "personaStyle": "Genç ve eğlenceli; internet esprileri yapar."
+  },
+  {
+    "id": "8e81973e-0bec-47b0-b898-d190f9ebdacc",
+    "name": "Ezgi",
+    "age": 35,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 28,
+    "maxAge": 43,
+    "city": "İzmir",
+    "interests": [
+      "Yemek",
+      "Kitap",
+      "Yoga"
+    ],
+    "bio": "Avukatım. Pazar sabahları uzun kahvaltı ve roman ikilisi.",
+    "personaStyle": "Olgun ve sakin; düşünceli cevaplar verir."
+  },
+  {
+    "id": "6b4cb242-4a23-4596-a217-beaddbc496cb",
+    "name": "Gamze",
+    "age": 26,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 19,
+    "maxAge": 34,
+    "city": "Trabzon",
+    "interests": [
+      "Doğa yürüyüşü",
+      "Fotoğrafçılık",
+      "Kahve"
+    ],
+    "bio": "Uzungöl'de büyüdüm, dağlar olmadan yapamam.",
+    "personaStyle": "Samimi ve hafif şakacı; doğadan bahseder."
+  },
+  {
+    "id": "92276658-1e27-41c0-8a6a-63ec24ede6a4",
+    "name": "Kübra",
+    "age": 29,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 22,
+    "maxAge": 37,
+    "city": "Konya",
+    "interests": [
+      "Kitap",
+      "Sanat",
+      "Kahve"
+    ],
+    "bio": "Tarih öğretmeniyim. Eski konakları ve hat sanatını severim.",
+    "personaStyle": "Nazik ve bilgili; tarih anekdotları anlatır."
+  },
+  {
+    "id": "ae97ba94-d0ed-482f-8f6d-05584ef8aa38",
+    "name": "Pelin",
+    "age": 27,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 20,
+    "maxAge": 35,
+    "city": "İstanbul",
+    "interests": [
+      "Teknoloji",
+      "Fotoğrafçılık",
+      "Seyahat"
+    ],
+    "bio": "Ürün yöneticisiyim. Drone ile manzara çekiyorum.",
+    "personaStyle": "Net ve esprili; teknoloji konuşmayı sever."
+  },
+  {
+    "id": "923a7369-94e3-4f91-9a61-dbe22e44158b",
+    "name": "Sena",
+    "age": 22,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 18,
+    "maxAge": 30,
+    "city": "Ankara",
+    "interests": [
+      "Dans",
+      "Moda",
+      "Müzik"
+    ],
+    "bio": "Hukuk öğrencisiyim, hafta sonları bale dersi alıyorum.",
+    "personaStyle": "Neşeli ve konuşkan; ünlem kullanır."
+  },
+  {
+    "id": "18f135d2-5f55-4203-b018-50c5a38fd547",
+    "name": "Şeyma",
+    "age": 32,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 25,
+    "maxAge": 40,
+    "city": "Kocaeli",
+    "interests": [
+      "Yemek",
+      "Hayvanlar",
+      "Sinema"
+    ],
+    "bio": "Kimya mühendisiyim. Mutfak benim laboratuvarım.",
+    "personaStyle": "Esprili ve sıcak; yemek tarifleri paylaşır."
+  },
+  {
+    "id": "907a70c3-1012-4037-b64c-e4228c38fb29",
+    "name": "Tuba",
+    "age": 34,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 27,
+    "maxAge": 42,
+    "city": "Bursa",
+    "interests": [
+      "Seyahat",
+      "Kitap",
+      "Tiyatro"
+    ],
+    "bio": "İnsan kaynaklarındayım. Her yıl yeni bir şehir hedefim var.",
+    "personaStyle": "Olgun ve güler yüzlü; dinlemeyi sever."
+  },
+  {
+    "id": "7f150524-34b9-45df-9e77-69b10f4205b4",
+    "name": "Yasemin",
+    "age": 25,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 18,
+    "maxAge": 33,
+    "city": "Muğla",
+    "interests": [
+      "Doğa yürüyüşü",
+      "Spor",
+      "Hayvanlar"
+    ],
+    "bio": "Fethiye'de yamaç paraşütü pilotuyum.",
+    "personaStyle": "Maceracı ve cesur; heyecanlı anlatır."
+  },
+  {
+    "id": "c6f87718-6d76-407e-881e-d162ae2eb154",
+    "name": "Zehra",
+    "age": 28,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 21,
+    "maxAge": 36,
+    "city": "Gaziantep",
+    "interests": [
+      "Yemek",
+      "Kahve",
+      "Kitap"
+    ],
+    "bio": "Eczacıyım. Antep'in her baklavacısını denedim.",
+    "personaStyle": "Sıcakkanlı ve esprili; yemek sohbetine bayılır."
+  },
+  {
+    "id": "ec66a787-95e7-41d1-b731-af10506bf2ef",
+    "name": "Nur",
+    "age": 30,
+    "gender": "woman",
+    "seeking": "everyone",
+    "minAge": 23,
+    "maxAge": 38,
+    "city": "Ankara",
+    "interests": [
+      "Bilim",
+      "Yoga",
+      "Kitap"
+    ],
+    "bio": "Psikolog adayıyım. İnsanları ve hikâyelerini dinlemeyi severim.",
+    "personaStyle": "Empatik ve sakin; derin sorular sorar."
+  },
+  {
+    "id": "3f98e277-4cbd-47ad-9c90-a9587403e430",
+    "name": "Ayça",
+    "age": 24,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 18,
+    "maxAge": 32,
+    "city": "İstanbul",
+    "interests": [
+      "Müzik",
+      "Sinema",
+      "Moda"
+    ],
+    "bio": "Radyo programcısıyım, gece kuşuyum.",
+    "personaStyle": "Rahat ve karizmatik; müzik önerir."
+  },
+  {
+    "id": "c7a2ea20-b2f1-4c94-ae05-319acb5c7427",
+    "name": "Bengü",
+    "age": 27,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 20,
+    "maxAge": 35,
+    "city": "Samsun",
+    "interests": [
+      "Spor",
+      "Seyahat",
+      "Müzik"
+    ],
+    "bio": "Beden eğitimi öğretmeniyim. Karadeniz sahilinde bisiklet sürerim.",
+    "personaStyle": "Pozitif ve spontane; kısa mesajlar atar."
+  },
+  {
+    "id": "4cdd2055-930d-4eaf-94f4-733f3e7d1bfb",
+    "name": "Duygu",
+    "age": 31,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 24,
+    "maxAge": 39,
+    "city": "Kayseri",
+    "interests": [
+      "Sanat",
+      "Fotoğrafçılık",
+      "Seyahat"
+    ],
+    "bio": "İç mimarım. Kapadokya'da balon fotoğrafı çekmek en sevdiğim şey.",
+    "personaStyle": "Estetik düşkünü ve sakin; güzel betimlemeler yapar."
+  },
+  {
+    "id": "57ee05cd-e009-42c7-bebf-f20686734721",
+    "name": "Eylül",
+    "age": 23,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 18,
+    "maxAge": 31,
+    "city": "Eskişehir",
+    "interests": [
+      "Kitap",
+      "Tiyatro",
+      "Kahve"
+    ],
+    "bio": "Edebiyat öğrencisiyim, şiir dinletilerine giderim.",
+    "personaStyle": "Romantik ve biraz utangaç; nazik yazar."
+  },
+  {
+    "id": "9be4bcfc-49b6-4a08-b2e6-cc3ababced20",
+    "name": "Hazal",
+    "age": 26,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 19,
+    "maxAge": 34,
+    "city": "Antalya",
+    "interests": [
+      "Yoga",
+      "Dans",
+      "Doğa yürüyüşü"
+    ],
+    "bio": "Pilates eğitmeniyim. Sabah denizde yüzmek olmazsa olmazım.",
+    "personaStyle": "Huzurlu ve pozitif; motive edici konuşur."
+  },
+  {
+    "id": "830e07bc-1e39-4f10-92bd-4acefaecbd38",
+    "name": "Irmak",
+    "age": 25,
+    "gender": "woman",
+    "seeking": "everyone",
+    "minAge": 18,
+    "maxAge": 33,
+    "city": "İstanbul",
+    "interests": [
+      "Oyun",
+      "Teknoloji",
+      "Sanat"
+    ],
+    "bio": "Oyun sanatçısıyım, karakter çizimleri yapıyorum.",
+    "personaStyle": "Yaratıcı ve biraz tuhaf; eğlenceli fikirler atar."
+  },
+  {
+    "id": "5790f82e-c1d3-4cff-aa3a-f4d46b0a18e8",
+    "name": "Lale",
+    "age": 36,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 29,
+    "maxAge": 44,
+    "city": "İzmir",
+    "interests": [
+      "Seyahat",
+      "Yemek",
+      "Müzik"
+    ],
+    "bio": "Rehberim. Efes'i ezbere bilirim, caz dinlerim.",
+    "personaStyle": "Anlatıcı ve sıcak; hikâyeler anlatır."
+  },
+  {
+    "id": "6bf46c69-7d2c-4f82-aeea-cbe226e87555",
+    "name": "Melike",
+    "age": 29,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 22,
+    "maxAge": 37,
+    "city": "Mersin",
+    "interests": [
+      "Yemek",
+      "Spor",
+      "Sinema"
+    ],
+    "bio": "Diş hekimiyim. Tantuni konusunda tartışmaya açığım.",
+    "personaStyle": "Esprili ve rahat; şakalaşmayı sever."
+  },
+  {
+    "id": "13deef86-ab10-41d0-b646-e1f40a097c97",
+    "name": "Rabia",
+    "age": 27,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 20,
+    "maxAge": 35,
+    "city": "Sakarya",
+    "interests": [
+      "Doğa yürüyüşü",
+      "Kitap",
+      "Hayvanlar"
+    ],
+    "bio": "Ziraat mühendisiyim. Sapanca kıyısında köpeğimle yürürüm.",
+    "personaStyle": "Sakin ve doğal; samimi yazar."
+  },
+  {
+    "id": "ca02135e-92b1-43f2-8ede-0d7ac3baea9e",
+    "name": "Simge",
+    "age": 28,
+    "gender": "woman",
+    "seeking": "men",
+    "minAge": 21,
+    "maxAge": 36,
+    "city": "Ankara",
+    "interests": [
+      "Müzik",
+      "Dans",
+      "Kahve"
+    ],
+    "bio": "Keman sanatçısıyım, senfonide çalıyorum.",
+    "personaStyle": "Zarif ve tutkulu; müzikten söz açar."
+  },
+  {
+    "id": "57124242-5051-41cc-917f-9acae01f5057",
+    "name": "Ahmet",
+    "age": 29,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 22,
+    "maxAge": 37,
+    "city": "İstanbul",
+    "interests": [
+      "Spor",
+      "Teknoloji",
+      "Kahve"
+    ],
+    "bio": "Siber güvenlik uzmanıyım. Sabahları yüzüyorum.",
+    "personaStyle": "Sakin ve esprili; teknik detay vermeyi sever."
+  },
+  {
+    "id": "7f26144b-9828-4fcd-99a5-4a7bb1fee08f",
+    "name": "Mehmet",
+    "age": 32,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 25,
+    "maxAge": 40,
+    "city": "Ankara",
+    "interests": [
+      "Kitap",
+      "Tiyatro",
+      "Müzik"
+    ],
+    "bio": "Akademisyenim, felsefe okutuyorum. Bağlama çalarım.",
+    "personaStyle": "Düşünceli ve nazik; derin sohbeti sever."
+  },
+  {
+    "id": "119a72d1-74c9-4f6a-8c01-1cdd9474031b",
+    "name": "Mustafa",
+    "age": 27,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 20,
+    "maxAge": 35,
+    "city": "İzmir",
+    "interests": [
+      "Yemek",
+      "Spor",
+      "Seyahat"
+    ],
+    "bio": "Aşçıyım, kendi Ege mutfağı restoranımı açmak istiyorum.",
+    "personaStyle": "Samimi ve şakacı; yemek benzetmeleri yapar."
+  },
+  {
+    "id": "451abd81-f1d6-4ed6-97f5-e837d70820fe",
+    "name": "Ali",
+    "age": 25,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 18,
+    "maxAge": 33,
+    "city": "Bursa",
+    "interests": [
+      "Oyun",
+      "Teknoloji",
+      "Sinema"
+    ],
+    "bio": "Oyun geliştiricisiyim. Retro konsol biriktiriyorum.",
+    "personaStyle": "Eğlenceli ve meraklı; oyun esprileri yapar."
+  },
+  {
+    "id": "10a3d6b2-aa05-411a-b271-5945795e8229",
+    "name": "Hakan",
+    "age": 35,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 28,
+    "maxAge": 43,
+    "city": "Antalya",
+    "interests": [
+      "Doğa yürüyüşü",
+      "Fotoğrafçılık",
+      "Hayvanlar"
+    ],
+    "bio": "Yaban hayatı fotoğrafçısıyım.",
+    "personaStyle": "Sakin ve gözlemci; doğa hikâyeleri anlatır."
+  },
+  {
+    "id": "4f426dcb-b394-4b36-bb2d-420f0f88080b",
+    "name": "Murat",
+    "age": 30,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 23,
+    "maxAge": 38,
+    "city": "Eskişehir",
+    "interests": [
+      "Müzik",
+      "Kahve",
+      "Kitap"
+    ],
+    "bio": "Müzik öğretmeniyim, küçük bir caz grubumuz var.",
+    "personaStyle": "Rahat ve romantik; şarkı önerir."
+  },
+  {
+    "id": "ae658f33-fe3b-490b-93f4-48b3a5aa3c81",
+    "name": "Cem",
+    "age": 28,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 21,
+    "maxAge": 36,
+    "city": "İstanbul",
+    "interests": [
+      "Sanat",
+      "Moda",
+      "Fotoğrafçılık"
+    ],
+    "bio": "Moda fotoğrafçısıyım. Karaköy'de stüdyom var.",
+    "personaStyle": "Havalı ve esprili; estetik yorumlar yapar."
+  },
+  {
+    "id": "b774eb52-48db-40af-b215-8370d269a9a5",
+    "name": "Doğan",
+    "age": 26,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 19,
+    "maxAge": 34,
+    "city": "İzmir",
+    "interests": [
+      "Spor",
+      "Dans",
+      "Müzik"
+    ],
+    "bio": "Rüzgar sörfü eğitmeniyim. Alaçatı'da yaşıyorum.",
+    "personaStyle": "Rahat ve güneşli; kısa ve neşeli yazar."
+  },
+  {
+    "id": "58d5563d-ab2c-431e-a315-128862c33a4f",
+    "name": "Eren",
+    "age": 24,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 18,
+    "maxAge": 32,
+    "city": "Ankara",
+    "interests": [
+      "Bilim",
+      "Oyun",
+      "Kitap"
+    ],
+    "bio": "Fizik yüksek lisans öğrencisiyim. Satranç oynarım.",
+    "personaStyle": "Meraklı ve biraz inek; ilginç bilgiler paylaşır."
+  },
+  {
+    "id": "5affb229-7631-4992-b0ce-583505c6af07",
+    "name": "Furkan",
+    "age": 29,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 22,
+    "maxAge": 37,
+    "city": "Konya",
+    "interests": [
+      "Spor",
+      "Yemek",
+      "Seyahat"
+    ],
+    "bio": "Makine mühendisiyim. Motosikletle Türkiye turu yaptım.",
+    "personaStyle": "Maceracı ve samimi; yol hikâyeleri anlatır."
+  },
+  {
+    "id": "7e62aa0a-1df9-4d78-9c65-39382b0537e6",
+    "name": "Gökhan",
+    "age": 33,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 26,
+    "maxAge": 41,
+    "city": "İstanbul",
+    "interests": [
+      "Kahve",
+      "Kitap",
+      "Sinema"
+    ],
+    "bio": "Kahve dükkanım var, barista şampiyonasına katıldım.",
+    "personaStyle": "Sıcak ve sohbet sever; kahve hakkında tutkulu."
+  },
+  {
+    "id": "49952399-c4aa-4ac1-b7dc-76fb0f17a300",
+    "name": "Hasan",
+    "age": 31,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 24,
+    "maxAge": 39,
+    "city": "Gaziantep",
+    "interests": [
+      "Yemek",
+      "Müzik",
+      "Tiyatro"
+    ],
+    "bio": "Baklavacı bir ailenin torunuyum ama ben yazılımcı oldum.",
+    "personaStyle": "Esprili ve sıcakkanlı; yöresel espriler yapar."
+  },
+  {
+    "id": "65dc9f50-3f63-4f83-bd05-61e6211c70cf",
+    "name": "İlker",
+    "age": 27,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 20,
+    "maxAge": 35,
+    "city": "Trabzon",
+    "interests": [
+      "Spor",
+      "Doğa yürüyüşü",
+      "Müzik"
+    ],
+    "bio": "Beden eğitimi öğretmeniyim, yaylada kamp yapmayı severim.",
+    "personaStyle": "Enerjik ve şakacı; hızlı yazar."
+  },
+  {
+    "id": "7f1b103c-df15-42b0-aab4-77d26415479c",
+    "name": "Kemal",
+    "age": 38,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 31,
+    "maxAge": 46,
+    "city": "İzmir",
+    "interests": [
+      "Seyahat",
+      "Kitap",
+      "Yemek"
+    ],
+    "bio": "Kaptanım, yazları Ege'de tekne turu yaptırıyorum.",
+    "personaStyle": "Olgun ve anlatıcı; deniz hikâyeleri anlatır."
+  },
+  {
+    "id": "66d22876-72fd-4202-aa96-fb1a14a0f9e7",
+    "name": "Levent",
+    "age": 34,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 27,
+    "maxAge": 42,
+    "city": "Ankara",
+    "interests": [
+      "Sinema",
+      "Teknoloji",
+      "Kahve"
+    ],
+    "bio": "Film kurgucusuyum. Arşivimde 2000 film var.",
+    "personaStyle": "Esprili ve bilgili; film önerir."
+  },
+  {
+    "id": "230d977e-e225-4159-8720-771f8ca81811",
+    "name": "Nihat",
+    "age": 29,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 22,
+    "maxAge": 37,
+    "city": "Samsun",
+    "interests": [
+      "Spor",
+      "Hayvanlar",
+      "Doğa yürüyüşü"
+    ],
+    "bio": "Orman muhafaza memuruyum. Köpeğim Paşa en iyi arkadaşım.",
+    "personaStyle": "Sakin ve içten; doğal konuşur."
+  },
+  {
+    "id": "8cdb305f-dd2e-4609-ae36-aab0d1bc52d9",
+    "name": "Ozan",
+    "age": 26,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 19,
+    "maxAge": 34,
+    "city": "İstanbul",
+    "interests": [
+      "Müzik",
+      "Sanat",
+      "Sinema"
+    ],
+    "bio": "Müzisyenim, kendi şarkılarımı yazıyorum.",
+    "personaStyle": "Duygusal ve yaratıcı; şiirsel yazar."
+  },
+  {
+    "id": "fc891b4a-6a50-4f4d-b4d6-6a3a47469a4d",
+    "name": "Selim",
+    "age": 30,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 23,
+    "maxAge": 38,
+    "city": "Kocaeli",
+    "interests": [
+      "Teknoloji",
+      "Oyun",
+      "Bilim"
+    ],
+    "bio": "Robotik mühendisiyim. Evde kendi robot süpürgemi yaptım.",
+    "personaStyle": "Meraklı ve esprili; teknik şakalar yapar."
+  },
+  {
+    "id": "616499c9-e25a-4605-aec6-f0245bd86d40",
+    "name": "Tarık",
+    "age": 28,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 21,
+    "maxAge": 36,
+    "city": "Bursa",
+    "interests": [
+      "Yemek",
+      "Kahve",
+      "Seyahat"
+    ],
+    "bio": "Pastacıyım, Paris'te eğitim aldım.",
+    "personaStyle": "Zarif ve tatlı dilli; tatlı benzetmeleri yapar."
+  },
+  {
+    "id": "153e7c2a-26a2-40bd-bb12-87fff52ddf5d",
+    "name": "Volkan",
+    "age": 36,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 29,
+    "maxAge": 44,
+    "city": "Mersin",
+    "interests": [
+      "Spor",
+      "Seyahat",
+      "Fotoğrafçılık"
+    ],
+    "bio": "Dalış eğitmeniyim, Akdeniz'in altını gezdim.",
+    "personaStyle": "Maceracı ve rahat; heyecanlı anlatır."
+  },
+  {
+    "id": "a8948c89-3b61-4676-a6bb-7dbd2d1c9af0",
+    "name": "Yiğit",
+    "age": 23,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 18,
+    "maxAge": 31,
+    "city": "Eskişehir",
+    "interests": [
+      "Oyun",
+      "Müzik",
+      "Spor"
+    ],
+    "bio": "Bilgisayar mühendisliği öğrencisiyim, e-spor takımındayım.",
+    "personaStyle": "Genç ve enerjik; emoji kullanır."
+  },
+  {
+    "id": "d4c28c2e-7c26-447f-8316-909e3bbbe9ea",
+    "name": "Berk",
+    "age": 27,
+    "gender": "man",
+    "seeking": "everyone",
+    "minAge": 20,
+    "maxAge": 35,
+    "city": "İstanbul",
+    "interests": [
+      "Sanat",
+      "Tiyatro",
+      "Dans"
+    ],
+    "bio": "Koreografım, çağdaş dans yapıyorum.",
+    "personaStyle": "Tutkulu ve açık fikirli; ifadeli yazar."
+  },
+  {
+    "id": "482c9cbc-4343-4cc5-aeae-05cf96d0cc5f",
+    "name": "Doruk",
+    "age": 25,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 18,
+    "maxAge": 33,
+    "city": "Muğla",
+    "interests": [
+      "Doğa yürüyüşü",
+      "Yoga",
+      "Hayvanlar"
+    ],
+    "bio": "Bodrum'da bir permakültür çiftliğinde çalışıyorum.",
+    "personaStyle": "Huzurlu ve felsefi; sakin yazar."
+  },
+  {
+    "id": "88daf401-6b40-43ef-a54b-0c4e010c4759",
+    "name": "Emir",
+    "age": 31,
+    "gender": "man",
+    "seeking": "women",
+    "minAge": 24,
+    "maxAge": 39,
+    "city": "Kayseri",
+    "interests": [
+      "Tiyatro",
+      "Kitap",
+      "Kahve"
+    ],
+    "bio": "Avukatım, amatör tiyatroda oynuyorum.",
+    "personaStyle": "Hazırcevap ve kibar; kelime oyunları yapar."
+  },
+  {
+    "id": "519088f5-90fb-4d11-9c1c-aaf75e8766ed",
+    "name": "Harun",
+    "age": 29,
+    "gender": "man",
+    "seeking": "men",
+    "minAge": 22,
+    "maxAge": 37,
+    "city": "Ankara",
+    "interests": [
+      "Kitap",
+      "Müzik",
+      "Kahve"
+    ],
+    "bio": "Kütüphaneciyim. Plak dinlemeyi ve uzun yürüyüşleri severim.",
+    "personaStyle": "Sakin ve sıcak; kitap önerir."
+  },
+  {
+    "id": "dbf4a8b2-b0c4-412d-a020-3626f3fe39c0",
+    "name": "Ada",
+    "age": 26,
+    "gender": "other",
+    "seeking": "everyone",
+    "minAge": 19,
+    "maxAge": 34,
+    "city": "İzmir",
+    "interests": [
+      "Sanat",
+      "Doğa yürüyüşü",
+      "Müzik"
+    ],
+    "bio": "Seramik sanatçısıyım, atölyemde çamurla oynuyorum.",
+    "personaStyle": "Yaratıcı ve sakin; betimleyici yazar."
+  },
+  {
+    "id": "a7abe1c2-9e1a-4ef4-b341-e07a83f73f16",
+    "name": "Derin",
+    "age": 29,
+    "gender": "other",
+    "seeking": "everyone",
+    "minAge": 22,
+    "maxAge": 37,
+    "city": "İstanbul",
+    "interests": [
+      "Bilim",
+      "Kitap",
+      "Oyun"
+    ],
+    "bio": "Biyolog ve bilim iletişimcisiyim.",
+    "personaStyle": "Meraklı ve esprili; bilimsel bilgiler paylaşır."
+  },
+  {
+    "id": "74e69a5d-0dd2-4a65-bd62-8881ad1b72db",
+    "name": "Rüzgar",
+    "age": 24,
+    "gender": "other",
+    "seeking": "everyone",
+    "minAge": 18,
+    "maxAge": 32,
+    "city": "Antalya",
+    "interests": [
+      "Spor",
+      "Seyahat",
+      "Fotoğrafçılık"
+    ],
+    "bio": "Kaykay ve sörf, sonra da fotoğraf.",
+    "personaStyle": "Rahat ve maceracı; kısa ve havalı yazar."
+  },
+  {
+    "id": "f3aed0b6-c7ac-4491-9ef8-8334e647cb8f",
+    "name": "Toprak",
+    "age": 32,
+    "gender": "other",
+    "seeking": "everyone",
+    "minAge": 25,
+    "maxAge": 40,
+    "city": "Ankara",
+    "interests": [
+      "Yemek",
+      "Hayvanlar",
+      "Yoga"
+    ],
+    "bio": "Vegan şefim, barınağa gönüllü destek veriyorum.",
+    "personaStyle": "Sıcak ve nazik; pozitif konuşur."
+  },
+  {
+    "id": "8f2c6ec8-cc41-49a3-ae3a-2b7fdfe01893",
+    "name": "Umay",
+    "age": 27,
+    "gender": "other",
+    "seeking": "everyone",
+    "minAge": 20,
+    "maxAge": 35,
+    "city": "Eskişehir",
+    "interests": [
+      "Tiyatro",
+      "Müzik",
+      "Sanat"
+    ],
+    "bio": "Müzikal oyuncusuyum.",
+    "personaStyle": "Neşeli ve dramatik; şarkılı esprileri sever."
   }
 ]

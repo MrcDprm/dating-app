@@ -35,6 +35,7 @@ private:
     Database &m_db;
     QString m_photosDir;
     Profile m_profile;
+    QString m_savedPhotoPath; // veritabanındaki fotoğraf; kaldırılıp kaydedilince dosyası silinir
 
     QLabel *m_photoPreview = nullptr;
     QLineEdit *m_name = nullptr;

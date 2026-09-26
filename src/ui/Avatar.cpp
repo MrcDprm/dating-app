@@ -2,9 +2,23 @@
 
 #include <QColor>
 #include <QFont>
+#include <QImageReader>
 #include <QLocale>
 #include <QPainter>
 #include <QPainterPath>
+#include <QTextBoundaryFinder>
+
+namespace {
+
+// Ekranda tek karakter görünen ilk parça (emoji ya da birleşik harf birden fazla QChar olabilir)
+QString firstCharacter(const QString &text)
+{
+    QTextBoundaryFinder finder(QTextBoundaryFinder::Grapheme, text);
+    const qsizetype end = finder.toNextBoundary();
+    return end > 0 ? text.left(end) : QString("?");
+}
+
+} // namespace
 
 QPixmap avatarPixmap(const Profile &profile, int size, qreal devicePixelRatio)
 {
@@ -19,8 +33,9 @@ QPixmap avatarPixmap(const Profile &profile, int size, qreal devicePixelRatio)
     circle.addEllipse(0, 0, size, size);
     painter.setClipPath(circle);
 
-    const QPixmap photo(profile.photoPath);
-    if (!profile.photoPath.isEmpty() && !photo.isNull()) {
+    // QImageReader, QPixmap'in dosya önbelleğini kullanmaz; aynı adla değiştirilen fotoğraf hemen görünür
+    const QPixmap photo = profile.photoPath.isEmpty() ? QPixmap() : QPixmap::fromImage(QImageReader(profile.photoPath).read());
+    if (!photo.isNull()) {
         // Fotoğrafı kareyi dolduracak şekilde büyütüp ortadan kırp
         const QPixmap scaled = photo.scaled(size, size, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
         painter.drawPixmap((size - scaled.width()) / 2, (size - scaled.height()) / 2, scaled);
@@ -39,7 +54,7 @@ QPixmap avatarPixmap(const Profile &profile, int size, qreal devicePixelRatio)
     font.setBold(true);
     painter.setFont(font);
     painter.setPen(Qt::white);
-    painter.drawText(QRect(0, 0, size, size), Qt::AlignCenter, QLocale(QLocale::Turkish).toUpper(profile.name.left(1)));
+    painter.drawText(QRect(0, 0, size, size), Qt::AlignCenter, QLocale(QLocale::Turkish).toUpper(firstCharacter(profile.name)));
     painter.end();
     return result;
 }

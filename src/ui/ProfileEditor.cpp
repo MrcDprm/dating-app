@@ -6,6 +6,7 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QDir>
+#include <QFile>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFormLayout>
@@ -167,6 +168,7 @@ ProfileEditor::ProfileEditor(Database &db, const QString &photosDir, QWidget *pa
 void ProfileEditor::setProfile(const Profile &profile)
 {
     m_profile = profile;
+    m_savedPhotoPath = profile.photoPath;
     m_name->setText(profile.name);
     m_age->setValue(profile.age);
     m_gender->setCurrentIndex(m_gender->findData(int(profile.gender)));
@@ -272,6 +274,12 @@ void ProfileEditor::save()
         showMessage(m_message, "Profil kaydedilemedi. Lütfen tekrar dene.", true);
         return;
     }
+    // Kaldırılan fotoğrafın dosyası da silinir (sadece uygulamanın kendi fotoğraf klasöründeyse)
+    const bool photoRemoved = !m_savedPhotoPath.isEmpty() && m_savedPhotoPath != updated.photoPath;
+    if (photoRemoved && QFileInfo(m_savedPhotoPath).absolutePath() == QFileInfo(m_photosDir).absoluteFilePath())
+        QFile::remove(m_savedPhotoPath);
+    m_savedPhotoPath = updated.photoPath;
+
     m_profile = updated;
     showMessage(m_message, "Profilin kaydedildi.", false);
     emit profileSaved(updated);

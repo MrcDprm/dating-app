@@ -43,7 +43,7 @@ void OllamaProvider::requestReply(const QString &requestId, const QString &syste
         {"model", m_model},
         {"messages", messages},
         {"stream", false},
-        {"options", QJsonObject{{"temperature", 0.8}, {"num_predict", 200}}},
+        {"options", QJsonObject{{"temperature", 0.7}, {"num_predict", 150}}},
     };
 
     QNetworkRequest request(kChatUrl);

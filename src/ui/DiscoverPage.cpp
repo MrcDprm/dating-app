@@ -103,7 +103,11 @@ void DiscoverPage::setCurrentUser(const Profile &me)
 {
     m_me = me;
     m_hint->setVisible(me.interests.isEmpty() || me.city.isEmpty());
-    m_queue = rankCandidates(m_me, m_db.unseenProfiles(m_me.id));
+    // Ağ olmadığı için diğer yerel hesaplar gerçek bir karşı taraf değildir; sadece hazır profiller önerilir
+    QList<Profile> candidates = m_db.unseenProfiles(m_me.id);
+    candidates.removeIf([](const Profile &profile) { return !profile.isAiPersona; });
+    m_queue = rankCandidates(m_me, candidates);
+
     showCurrent();
 }
 

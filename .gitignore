@@ -1,5 +1,6 @@
 # CMake derleme çıktıları
 build/
+build-release/
 cmake-build-*/
 CMakeUserPresets.json
 

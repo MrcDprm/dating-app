@@ -67,7 +67,8 @@
 
 ## Installation
 
-1. Download `DatingApp-1.0.0-Setup.exe` from the [Releases](https://github.com/MrcDprm/dating-app/releases/latest) page and run it.
+1. Download `DatingApp-1.0.0-Setup.exe` from the [Releases](https://github.com/MrcDprm/dating-app/releases/latest) page and run it. No administrator rights are needed.
+   > The app is not digitally signed, so Windows SmartScreen may show a warning. Continue with **More info → Run anyway**.
 2. Chatting needs an AI model. The free option is **Ollama**:
    - Install Ollama from [ollama.com](https://ollama.com).
    - Download the model in a terminal (about 4.7 GB):
@@ -119,6 +120,19 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 .\build\DatingApp.exe
 ```
+
+### Building the installer
+
+Requires [Inno Setup 6](https://jrsoftware.org/isinfo.php).
+
+```
+powershell -ExecutionPolicy Bypass -File installer\deploy.ps1
+ISCC installer\DatingApp.iss
+```
+
+`deploy.ps1` makes a Release build, collects the Qt files with `windeployqt` and copies the remaining MSYS2 DLLs into `dist\DatingApp`. The installer is created in `installer\Output\`.
+
+**When releasing a new version:** update the version in both `CMakeLists.txt` (`project(... VERSION ...)`) and `installer/DatingApp.iss` (`AppVersion`), run the tests, run both commands and upload the installer to a new GitHub Release.
 
 ## What I Learned
 

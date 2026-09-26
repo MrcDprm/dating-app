@@ -66,7 +66,8 @@
 
 ## Kurulum
 
-1. [Releases](https://github.com/MrcDprm/dating-app/releases/latest) sayfasından `DatingApp-1.0.0-Setup.exe` dosyasını indir ve çalıştır.
+1. [Releases](https://github.com/MrcDprm/dating-app/releases/latest) sayfasından `DatingApp-1.0.0-Setup.exe` dosyasını indir ve çalıştır. Yönetici izni gerekmez.
+   > Program dijital olarak imzalanmadığı için Windows SmartScreen uyarı gösterebilir. **Ek bilgi → Yine de çalıştır** ile devam edebilirsin.
 2. Sohbet için yapay zekâ gerekir. Ücretsiz seçenek **Ollama**:
    - [ollama.com](https://ollama.com) adresinden Ollama'yı kur.
    - Terminalde modeli indir (yaklaşık 4,7 GB):
@@ -118,6 +119,19 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 .\build\DatingApp.exe
 ```
+
+### Kurulum dosyası oluşturma
+
+[Inno Setup 6](https://jrsoftware.org/isinfo.php) gerekir.
+
+```
+powershell -ExecutionPolicy Bypass -File installer\deploy.ps1
+ISCC installer\DatingApp.iss
+```
+
+`deploy.ps1` Release derlemesi yapar, Qt dosyalarını `windeployqt` ile toplar ve kalan MSYS2 DLL'lerini `dist\DatingApp` klasörüne kopyalar. Kurulum dosyası `installer\Output\` klasöründe oluşur.
+
+**Yeni sürüm yayınlarken:** sürüm numarasını hem `CMakeLists.txt` (`project(... VERSION ...)`) hem de `installer/DatingApp.iss` (`AppVersion`) dosyasında güncelle, testleri çalıştır, iki komutu çalıştır ve oluşan kurulum dosyasını yeni bir GitHub Release'e yükle.
 
 ## Öğrendiklerim
 

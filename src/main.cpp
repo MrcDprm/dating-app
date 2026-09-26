@@ -47,17 +47,27 @@ int main(int argc, char *argv[])
         qWarning() << "Hazır profiller yüklenemedi";
 
 
-    LoginWindow login(db);
-    if (login.exec() != QDialog::Accepted)
-        return 0;
+    // "Çıkış yap" seçilirse ana pencere kapanır ve giriş ekranı tekrar açılır
+    while (true) {
+        LoginWindow login(db);
+        if (login.exec() != QDialog::Accepted)
+            return 0;
 
-    const std::optional<Profile> me = db.profile(login.profileId());
-    if (!me)
-        return fail("Profil bulunamadı.");
+        const std::optional<Profile> me = db.profile(login.profileId());
+        if (!me)
+            return fail("Profil bulunamadı.");
 
-    MainWindow window(db, *me, dataDir);
-    window.show();
+        MainWindow window(db, *me, dataDir);
+        bool loggedOut = false;
+        QObject::connect(&window, &MainWindow::logoutRequested, &window, [&] {
+            loggedOut = true;
+            window.close();
+        });
+        window.show();
 
-
-    return app.exec();
+        const int exitCode = app.exec();
+        if (!loggedOut)
+            return exitCode;
+    }
 }
+

@@ -23,6 +23,8 @@ public:
 
     void setCurrentUser(const Profile &me);
     void openChat(const Profile &other);
+    void setProvider(ChatProvider &provider);
+
 
 signals:
     void unmatched(const QString &otherId);
@@ -38,7 +40,7 @@ private:
     void addBubble(const QString &text, bool fromUser);
 
     Database &m_db;
-    ChatProvider &m_provider;
+    ChatProvider *m_provider = nullptr;
     Profile m_me;
     Profile m_other;
     QSet<QString> m_waitingFor; // cevabı beklenen sohbetler (karşı profil kimlikleri)

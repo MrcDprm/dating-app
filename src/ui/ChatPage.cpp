@@ -28,7 +28,6 @@ constexpr int kMaxBubbleWidth = 420;
 ChatPage::ChatPage(Database &db, ChatProvider &provider, QWidget *parent)
     : QWidget(parent)
     , m_db(db)
-    , m_provider(provider)
 {
     // Üst bilgi: avatar, ad ve "eşleşmeyi kaldır"
     m_avatar = new QLabel;
@@ -93,9 +92,21 @@ ChatPage::ChatPage(Database &db, ChatProvider &provider, QWidget *parent)
     connect(m_input, &QLineEdit::returnPressed, this, &ChatPage::sendMessage);
     connect(m_retry, &QPushButton::clicked, this, &ChatPage::requestReply);
     connect(unmatchButton, &QPushButton::clicked, this, &ChatPage::confirmUnmatch);
-    connect(&m_provider, &ChatProvider::replyReady, this, &ChatPage::onReplyReady);
-    connect(&m_provider, &ChatProvider::failed, this, &ChatPage::onReplyFailed);
+    setProvider(provider);
 }
+
+void ChatPage::setProvider(ChatProvider &provider)
+{
+    // Eski sağlayıcıdan gelecek cevaplar artık dinlenmez; bekleyen istekler iptal sayılır
+    if (m_provider)
+        disconnect(m_provider, nullptr, this, nullptr);
+    m_provider = &provider;
+    m_waitingFor.clear();
+    connect(m_provider, &ChatProvider::replyReady, this, &ChatPage::onReplyReady);
+    connect(m_provider, &ChatProvider::failed, this, &ChatPage::onReplyFailed);
+    updateInputState();
+}
+
 
 void ChatPage::setCurrentUser(const Profile &me)
 {
@@ -136,7 +147,7 @@ void ChatPage::requestReply()
     m_retry->hide();
     m_waitingFor.insert(m_other.id);
     updateInputState();
-    m_provider.requestReply(m_other.id, buildPersonaPrompt(m_other, m_me), m_db.messages(m_me.id, m_other.id));
+    m_provider->requestReply(m_other.id, buildPersonaPrompt(m_other, m_me), m_db.messages(m_me.id, m_other.id));
 }
 
 void ChatPage::onReplyReady(const QString &otherId, const QString &text)

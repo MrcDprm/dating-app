@@ -21,11 +21,12 @@ qt_add_library(dating_core STATIC
     src/data/Database.cpp
     src/data/SeedProfiles.cpp
     src/ai/PersonaPrompt.cpp
-
+    src/ai/SecretStore.cpp
 )
 
 target_include_directories(dating_core PUBLIC src)
-target_link_libraries(dating_core PUBLIC Qt6::Core Qt6::Sql PRIVATE PkgConfig::SODIUM)
+target_link_libraries(dating_core PUBLIC Qt6::Core Qt6::Sql PRIVATE PkgConfig::SODIUM crypt32)
+
 
 
 
@@ -40,6 +41,10 @@ qt_add_executable(DatingApp WIN32
     src/ai/OllamaProvider.cpp
     src/ui/MatchesPage.cpp
     src/ui/ChatPage.cpp
+    src/ai/ClaudeProvider.cpp
+    src/ai/AiSettings.cpp
+    src/ui/SettingsDialog.cpp
+
 )
 
 qt_add_resources(DatingApp "app_resources"

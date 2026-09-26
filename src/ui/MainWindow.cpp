@@ -3,9 +3,11 @@
 #include "DiscoverPage.h"
 #include "MatchesPage.h"
 #include "ProfileEditor.h"
-#include "ai/OllamaProvider.h"
+#include "SettingsDialog.h"
+#include "ai/AiSettings.h"
+#include "ai/ChatProvider.h"
 #include "data/Database.h"
-
+#include <QMenuBar>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QTabWidget>
@@ -14,11 +16,13 @@ MainWindow::MainWindow(Database &db, const Profile &me, const QString &dataDir, 
     : QMainWindow(parent)
     , m_db(db)
     , m_me(me)
+    , m_settingsFile(dataDir + "/settings.ini")
 {
     setWindowTitle("Dating App - " + m_me.name);
     resize(1000, 720);
 
-    m_provider = new OllamaProvider("qwen2.5:7b-instruct", this);
+    m_provider = createChatProvider(AiSettings::load(m_settingsFile), this);
+
 
     m_discover = new DiscoverPage(m_db);
     m_discover->setCurrentUser(m_me);
@@ -34,6 +38,8 @@ MainWindow::MainWindow(Database &db, const Profile &me, const QString &dataDir, 
     m_tabs->addTab(m_matches, "Eşleşmeler");
     m_tabs->addTab(m_profileEditor, "Profil");
     setCentralWidget(m_tabs);
+
+        createMenus();
 
     connect(m_discover, &DiscoverPage::matched, this, &MainWindow::showMatchDialog);
     connect(m_profileEditor, &ProfileEditor::profileSaved, this, &MainWindow::onProfileSaved);
@@ -67,4 +73,31 @@ void MainWindow::showMatchDialog(const Profile &other)
         m_tabs->setCurrentWidget(m_matches);
         m_matches->openChat(other.id);
     }
+}
+
+
+void MainWindow::createMenus()
+{
+    QMenu *accountMenu = menuBar()->addMenu("&Hesap");
+    accountMenu->addAction("&Ayarlar…", QKeySequence("Ctrl+,"), this, &MainWindow::openSettings);
+    accountMenu->addSeparator();
+    accountMenu->addAction("Çıkış &yap", this, &MainWindow::logoutRequested);
+}
+
+void MainWindow::openSettings()
+{
+    SettingsDialog dialog(AiSettings::load(m_settingsFile), this);
+    if (dialog.exec() != QDialog::Accepted)
+        return;
+
+    if (!dialog.settings().save(m_settingsFile)) {
+        QMessageBox::warning(this, "Ayarlar", "Ayarlar kaydedilemedi.");
+        return;
+    }
+
+    // Yeni sağlayıcıyı oluştur, sohbet ekranına ver, eskisini sil
+    ChatProvider *oldProvider = m_provider;
+    m_provider = createChatProvider(dialog.settings(), this);
+    m_matches->setProvider(*m_provider);
+    oldProvider->deleteLater();
 }

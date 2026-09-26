@@ -4,6 +4,7 @@
 #include "data/Database.h"
 #include "data/SeedProfiles.h"
 #include "ai/PersonaPrompt.h"
+#include "ai/SecretStore.h"
 
 #include <QFile>
 #include <QTest>
@@ -51,6 +52,7 @@ private slots:
     void seedImportSkipsInvalidEntries();
     void bundledSeedFileIsValid();
     void personaPromptContainsCharacterAndRules();
+    void secretStoreRoundTrip();
 };
 
 void TestCore::identicalProfilesScoreFull()
@@ -311,6 +313,15 @@ void TestCore::resetPassesKeepsLikes()
     QCOMPARE(unseen[0].id, QString("a"));
 }
 
+void TestCore::secretStoreRoundTrip()
+{
+    const QString secret = "sk-ant-test-anahtar-ğüş";
+    const std::optional<QByteArray> encrypted = SecretStore::encrypt(secret);
+    QVERIFY(encrypted.has_value());
+    QVERIFY(!encrypted->contains(secret.toUtf8())); // diskte düz metin görünmez
+    QCOMPARE(SecretStore::decrypt(*encrypted).value_or(QString()), secret);
+    QVERIFY(!SecretStore::decrypt("bozuk veri").has_value());
+}
 
 QTEST_GUILESS_MAIN(TestCore)
 #include "test_core.moc"

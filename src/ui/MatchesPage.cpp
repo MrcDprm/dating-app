@@ -85,6 +85,11 @@ void MatchesPage::openChat(const QString &otherId)
     m_stack->setCurrentWidget(m_placeholder);
 }
 
+void MatchesPage::setProvider(ChatProvider &provider)
+{
+    m_chat->setProvider(provider);
+}
+
 void MatchesPage::onSelectionChanged()
 {
     const int row = m_list->currentRow();

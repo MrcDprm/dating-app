@@ -22,6 +22,8 @@ public:
     void setCurrentUser(const Profile &me);
     void refresh();
     void openChat(const QString &otherId);
+    void setProvider(ChatProvider &provider);
+
 
 private:
     void onSelectionChanged();

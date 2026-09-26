@@ -19,12 +19,18 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(Database &db, const Profile &me, const QString &dataDir, QWidget *parent = nullptr);
 
+signals:
+    void logoutRequested();
+
 private:
+    void createMenus();
+    void openSettings();
     void showMatchDialog(const Profile &other);
     void onProfileSaved(const Profile &profile);
 
     Database &m_db;
     Profile m_me;
+    QString m_settingsFile;
     QTabWidget *m_tabs = nullptr;
     ChatProvider *m_provider = nullptr;
     DiscoverPage *m_discover = nullptr;

@@ -3,6 +3,7 @@
 #include "core/PasswordPolicy.h"
 #include "data/Database.h"
 #include "data/SeedProfiles.h"
+#include "ai/PersonaPrompt.h"
 
 #include <QFile>
 #include <QTest>
@@ -48,6 +49,7 @@ private slots:
     void unmatchHidesProfileAndDeletesChat();
     void seedImportSkipsInvalidEntries();
     void bundledSeedFileIsValid();
+    void personaPromptContainsCharacterAndRules();
 };
 
 void TestCore::identicalProfilesScoreFull()
@@ -273,6 +275,22 @@ void TestCore::personaLikeBackChanceFollowsScore()
     QVERIFY(personaLikesBack(60, 79));  // 60 + 20 = %80
     QVERIFY(!personaLikesBack(60, 80));
     QVERIFY(!personaLikesBack(100, 95)); // en yüksek olasılık %95
+}
+
+void TestCore::personaPromptContainsCharacterAndRules()
+{
+    Profile persona = makeProfile("p", 27, Gender::Woman, Seeking::Men, "İstanbul", {"Oyun", "Bilim"});
+    persona.name = "Selin";
+    persona.personaStyle = "Zeki ve alaycı";
+    Profile user = makeProfile("u", 25, Gender::Man, Seeking::Women, "İzmir", {"Kahve"});
+    user.name = "Miraç";
+
+    const QString prompt = buildPersonaPrompt(persona, user);
+    QVERIFY(prompt.contains("Sen Selin adında, 27 yaşında, İstanbul"));
+    QVERIFY(prompt.contains("Zeki ve alaycı"));
+    QVERIFY(prompt.contains("Miraç"));
+    QVERIFY(prompt.contains("Kahve"));
+    QVERIFY(prompt.contains("hayali bir karakter"));
 }
 
 QTEST_GUILESS_MAIN(TestCore)

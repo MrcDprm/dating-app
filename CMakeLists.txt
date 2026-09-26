@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Sql Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Sql Network Widgets)
+
 
 
 find_package(PkgConfig REQUIRED)
@@ -19,7 +20,7 @@ qt_add_library(dating_core STATIC
     src/core/PasswordHasher.cpp
     src/data/Database.cpp
     src/data/SeedProfiles.cpp
-
+    src/ai/PersonaPrompt.cpp
 
 )
 
@@ -35,7 +36,8 @@ qt_add_executable(DatingApp WIN32
     src/ui/DiscoverPage.cpp
     src/ui/Avatar.cpp
     src/ui/ProfileEditor.cpp
-
+    src/ai/ChatProvider.h
+    src/ai/OllamaProvider.cpp
 )
 
 qt_add_resources(DatingApp "app_resources"
@@ -45,7 +47,7 @@ qt_add_resources(DatingApp "app_resources"
 )
 
 
-target_link_libraries(DatingApp PRIVATE dating_core Qt6::Widgets)
+target_link_libraries(DatingApp PRIVATE dating_core Qt6::Widgets Qt6::Network)
 target_compile_definitions(DatingApp PRIVATE APP_VERSION="${PROJECT_VERSION}")
 
 find_package(Qt6 REQUIRED COMPONENTS Test)

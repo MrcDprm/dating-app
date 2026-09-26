@@ -64,7 +64,7 @@ QWidget *LoginWindow::createLoginTab()
     m_loginPassword = new QLineEdit;
     m_loginPassword->setEchoMode(QLineEdit::Password);
     m_loginButton = new QPushButton("Giriş yap");
-    m_loginButton->setDefault(true);
+    m_loginButton->setAutoDefault(false);
     m_loginError = createErrorLabel();
 
     auto *form = new QFormLayout(page);
@@ -107,6 +107,7 @@ QWidget *LoginWindow::createRegisterTab()
     m_registerError = createErrorLabel();
 
     auto *button = new QPushButton("Hesap oluştur");
+    button->setAutoDefault(false);
 
     auto *form = new QFormLayout(page);
     form->addRow("Kullanıcı adı", m_registerUser);
@@ -120,6 +121,8 @@ QWidget *LoginWindow::createRegisterTab()
     form->addRow(button);
 
     connect(button, &QPushButton::clicked, this, &LoginWindow::registerAccount);
+    connect(m_registerPasswordAgain, &QLineEdit::returnPressed, this, &LoginWindow::registerAccount);
+
     return page;
 }
 

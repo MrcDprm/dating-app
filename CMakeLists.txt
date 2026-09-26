@@ -34,6 +34,8 @@ qt_add_executable(DatingApp WIN32
     src/ui/MainWindow.cpp
     src/ui/DiscoverPage.cpp
     src/ui/Avatar.cpp
+    src/ui/ProfileEditor.cpp
+
 )
 
 qt_add_resources(DatingApp "app_resources"

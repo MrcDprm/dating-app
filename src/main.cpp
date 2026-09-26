@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
     if (!me)
         return fail("Profil bulunamadı.");
 
-    MainWindow window(db, *me);
+    MainWindow window(db, *me, dataDir);
     window.show();
 
 

@@ -1,11 +1,13 @@
 #include "MainWindow.h"
 
 #include "DiscoverPage.h"
+#include "MatchesPage.h"
 #include "ProfileEditor.h"
+#include "ai/OllamaProvider.h"
 #include "data/Database.h"
 
-#include <QLabel>
 #include <QMessageBox>
+#include <QPushButton>
 #include <QTabWidget>
 
 MainWindow::MainWindow(Database &db, const Profile &me, const QString &dataDir, QWidget *parent)
@@ -16,13 +18,20 @@ MainWindow::MainWindow(Database &db, const Profile &me, const QString &dataDir, 
     setWindowTitle("Dating App - " + m_me.name);
     resize(1000, 720);
 
+    m_provider = new OllamaProvider("qwen2.5:7b-instruct", this);
+
     m_discover = new DiscoverPage(m_db);
-    m_discover->setCurrentUser(m_me);    
+    m_discover->setCurrentUser(m_me);
+
+    m_matches = new MatchesPage(m_db, *m_provider);
+    m_matches->setCurrentUser(m_me);
+
     m_profileEditor = new ProfileEditor(m_db, dataDir + "/photos");
     m_profileEditor->setProfile(m_me);
+
     m_tabs = new QTabWidget;
     m_tabs->addTab(m_discover, "Keşfet");
-    m_tabs->addTab(new QLabel("Eşleşmeler yakında"), "Eşleşmeler");
+    m_tabs->addTab(m_matches, "Eşleşmeler");
     m_tabs->addTab(m_profileEditor, "Profil");
     setCentralWidget(m_tabs);
 
@@ -39,6 +48,7 @@ void MainWindow::onProfileSaved(const Profile &profile)
     m_me = profile;
     setWindowTitle("Dating App - " + m_me.name);
     m_discover->setCurrentUser(m_me); // yeni tercihlere göre adayları yeniden sırala
+    m_matches->setCurrentUser(m_me);
 }
 
 void MainWindow::showMatchDialog(const Profile &other)
@@ -46,7 +56,15 @@ void MainWindow::showMatchDialog(const Profile &other)
     QMessageBox box(this);
     box.setWindowTitle("Eşleşme!");
     box.setTextFormat(Qt::PlainText);
-    box.setText(QString("%1 ile eşleştiniz! 🎉\nEşleşmeler sekmesinden sohbete başlayabilirsin.").arg(other.name));
+    box.setText(QString("%1 ile eşleştiniz! 🎉").arg(other.name));
     box.setIcon(QMessageBox::Information);
+    QPushButton *chatButton = box.addButton("Sohbete başla", QMessageBox::AcceptRole);
+    box.addButton("Keşfetmeye devam", QMessageBox::RejectRole);
     box.exec();
+
+    m_matches->refresh();
+    if (box.clickedButton() == chatButton) {
+        m_tabs->setCurrentWidget(m_matches);
+        m_matches->openChat(other.id);
+    }
 }

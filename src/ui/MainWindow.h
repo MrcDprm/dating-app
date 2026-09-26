@@ -5,7 +5,9 @@
 #include <QMainWindow>
 
 class Database;
+class ChatProvider;
 class DiscoverPage;
+class MatchesPage;
 class ProfileEditor;
 class QTabWidget;
 
@@ -24,7 +26,9 @@ private:
     Database &m_db;
     Profile m_me;
     QTabWidget *m_tabs = nullptr;
+    ChatProvider *m_provider = nullptr;
     DiscoverPage *m_discover = nullptr;
+    MatchesPage *m_matches = nullptr;
     ProfileEditor *m_profileEditor = nullptr;
 
 };

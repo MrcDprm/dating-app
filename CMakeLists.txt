@@ -38,6 +38,8 @@ qt_add_executable(DatingApp WIN32
     src/ui/ProfileEditor.cpp
     src/ai/ChatProvider.h
     src/ai/OllamaProvider.cpp
+    src/ui/MatchesPage.cpp
+    src/ui/ChatPage.cpp
 )
 
 qt_add_resources(DatingApp "app_resources"

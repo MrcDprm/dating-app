@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QFile>
+#include <QIcon>
 #include <QMessageBox>
 #include <QStandardPaths>
 
@@ -26,6 +27,8 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     QApplication::setApplicationName("DatingApp");
     QApplication::setApplicationVersion(APP_VERSION);
+    QApplication::setWindowIcon(QIcon(":/icon.png"));
+
 
     if (!PasswordHasher::initialize())
         return fail("Güvenlik kütüphanesi başlatılamadı.");

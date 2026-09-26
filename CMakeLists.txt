@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(DatingApp VERSION 1.0.0 LANGUAGES CXX)
+project(DatingApp VERSION 1.0.0 LANGUAGES CXX RC)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -29,6 +29,9 @@ target_link_libraries(dating_core PUBLIC Qt6::Core Qt6::Sql PRIVATE PkgConfig::S
 
 
 
+# Sürüm numarası ve ikon .exe dosyasına buradan gömülür (Özellikler > Ayrıntılar)
+configure_file(resources/app.rc.in ${CMAKE_BINARY_DIR}/app.rc @ONLY)
+
 
 qt_add_executable(DatingApp WIN32
     src/main.cpp
@@ -44,13 +47,16 @@ qt_add_executable(DatingApp WIN32
     src/ai/ClaudeProvider.cpp
     src/ai/AiSettings.cpp
     src/ui/SettingsDialog.cpp
+    src/ui/AboutDialog.cpp
+    ${CMAKE_BINARY_DIR}/app.rc
 
 )
 
 qt_add_resources(DatingApp "app_resources"
     PREFIX "/"
     BASE resources
-    FILES resources/seed_profiles.json
+    FILES resources/seed_profiles.json resources/icon.png
+
 )
 
 

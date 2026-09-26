@@ -1,5 +1,5 @@
 #include "MainWindow.h"
-
+#include "AboutDialog.h"
 #include "DiscoverPage.h"
 #include "MatchesPage.h"
 #include "ProfileEditor.h"
@@ -82,6 +82,13 @@ void MainWindow::createMenus()
     accountMenu->addAction("&Ayarlar…", QKeySequence("Ctrl+,"), this, &MainWindow::openSettings);
     accountMenu->addSeparator();
     accountMenu->addAction("Çıkış &yap", this, &MainWindow::logoutRequested);
+    
+    QMenu *helpMenu = menuBar()->addMenu("&Yardım");
+    helpMenu->addAction("&Hakkında", this, [this] {
+        AboutDialog dialog(this);
+        dialog.exec();
+    });
+
 }
 
 void MainWindow::openSettings()

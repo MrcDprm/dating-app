@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  C++ ve Qt 6 ile yazılmış masaüstü tanışma uygulaması. Profilleri uyum puanına göre sıralar;<br>
+  C++ ve Qt ile yazılmış masaüstü tanışma uygulaması. Profilleri uyum puanına göre sıralar;<br>
   eşleştiğin karakterler yapay zekâ ile kendi kişiliklerine bürünerek sohbete cevap verir.
 </p>
 
@@ -81,8 +81,8 @@ Veriler `%APPDATA%\DatingApp` klasöründe saklanır. Kaldırma işlemi Windows'
 
 ## Kullanılan Teknolojiler
 
-- **C++20**, **CMake**, **Ninja**
-- **Qt 6**: Widgets (arayüz), Sql (SQLite), Network (HTTP), Test (birim testleri)
+- **C++**, **CMake**, **Ninja**
+- **Qt**: Widgets (arayüz), Sql (SQLite), Network (HTTP), Test (birim testleri)
 - **SQLite**: yerel veritabanı
 - **libsodium**: Argon2id şifre hash'leme
 - **Windows DPAPI**: API anahtarını şifreleme
@@ -154,4 +154,4 @@ ISCC installer\DatingApp.iss
 
 ## Lisans
 
-[MIT](LICENSE) © 2026 Miraç Deprem. Uygulama [Qt 6](https://www.qt.io) (LGPLv3), SQLite ve libsodium kullanır.
+[MIT](LICENSE) © 2026 Miraç Deprem. Uygulama [Qt](https://www.qt.io) (LGPLv3), SQLite ve libsodium kullanır.

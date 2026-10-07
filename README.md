@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  A desktop dating app written in C++ and Qt 6. It ranks profiles by a compatibility score,<br>
+  A desktop dating app written in C++ and Qt. It ranks profiles by a compatibility score,<br>
   and the characters you match with reply to your messages in their own personality using AI.
 </p>
 
@@ -82,8 +82,8 @@ Data is stored in `%APPDATA%\DatingApp`. Uninstall from the Windows "Apps" setti
 
 ## Tech Stack
 
-- **C++20**, **CMake**, **Ninja**
-- **Qt 6**: Widgets (UI), Sql (SQLite), Network (HTTP), Test (unit tests)
+- **C++**, **CMake**, **Ninja**
+- **Qt**: Widgets (UI), Sql (SQLite), Network (HTTP), Test (unit tests)
 - **SQLite**: local database
 - **libsodium**: Argon2id password hashing
 - **Windows DPAPI**: API key encryption
@@ -155,4 +155,4 @@ ISCC installer\DatingApp.iss
 
 ## License
 
-[MIT](LICENSE) © 2026 Miraç Deprem. The app uses [Qt 6](https://www.qt.io) (LGPLv3), SQLite and libsodium.
+[MIT](LICENSE) © 2026 Miraç Deprem. The app uses [Qt](https://www.qt.io) (LGPLv3), SQLite and libsodium.

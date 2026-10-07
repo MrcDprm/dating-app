@@ -39,7 +39,7 @@ AboutDialog::AboutDialog(QWidget *parent)
     // Sabit içerik; kullanıcı verisi içermediği için bağlantı için zengin metin (HTML) güvenli
     auto *links = new QLabel(QString("<a href=\"%1\">GitHub'da kaynak kodu</a><br>"
                                      "MIT Lisansı · © 2026 Miraç Deprem<br>"
-                                     "Qt 6 (LGPLv3), SQLite, libsodium").arg(kRepoUrl));
+                                     "Qt (LGPLv3), SQLite, libsodium").arg(kRepoUrl));
     links->setTextFormat(Qt::RichText);
     links->setOpenExternalLinks(true);
 

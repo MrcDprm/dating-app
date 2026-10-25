@@ -144,14 +144,6 @@ ISCC installer\DatingApp.iss
 - **Yapay zekâyı bir uygulamaya bağlamak.** HTTP üzerinden yerel bir modele (Ollama) ve bulut API'sine (Claude) istek göndermeyi, ikisini ortak bir arayüzün arkasına koyup ayarlardan değiştirilebilir yapmayı öğrendim. Küçük modellerin talimata nasıl daha iyi uyduğunu deneyerek gördüm: talimatı İngilizce yazıp Türkçe cevap istemek ve örnek bir konuşma eklemek sonucu belirgin şekilde iyileştirdi.
 - **Test etmek.** Uyum puanı, şifre kuralları ve veritabanı için Qt Test ile birim testleri yazdım. Testlerde veritabanını bellekte açmak, her testin diğerinden bağımsız ve hızlı çalışmasını sağladı.
 
-## Gelecek Planları
-
-- Filtreler (şehir, yaş aralığı) ve arama
-- Açık / koyu tema seçeneği
-- Cevapların kelime kelime akarak gelmesi (streaming)
-- Sohbette karşı tarafın da ilk mesajı atabilmesi
-- İngilizce arayüz
-
 ## Lisans
 
 [MIT](LICENSE) © 2026 Miraç Deprem. Uygulama [Qt](https://www.qt.io) (LGPLv3), SQLite ve libsodium kullanır.

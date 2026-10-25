@@ -145,14 +145,6 @@ ISCC installer\DatingApp.iss
 - **Connecting AI to an app.** I learned to send HTTP requests to a local model (Ollama) and a cloud API (Claude), put both behind a common interface and make them switchable in the settings. By experimenting I saw how small models follow instructions better: writing the instructions in English, asking for Turkish replies and adding an example conversation noticeably improved the results.
 - **Testing.** I wrote unit tests with Qt Test for the compatibility score, password rules and the database. Opening the database in memory kept every test fast and independent of the others.
 
-## Future Plans
-
-- Filters (city, age range) and search
-- Light / dark theme option
-- Streaming replies word by word
-- Letting the other side send the first message
-- English user interface
-
 ## License
 
 [MIT](LICENSE) © 2026 Miraç Deprem. The app uses [Qt](https://www.qt.io) (LGPLv3), SQLite and libsodium.
